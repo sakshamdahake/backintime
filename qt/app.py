@@ -139,7 +139,7 @@ class MainWindow(QMainWindow):
         # right widget
         self.filesWidget = QGroupBox(self)
         filesLayout = QVBoxLayout(self.filesWidget)
-        left, top, right, bottom = filesLayout.getContentsMargins()
+        right= filesLayout.getContentsMargins()
         filesLayout.setContentsMargins(0, 0, right, 0)
 
         # main splitter
@@ -1239,7 +1239,7 @@ class MainWindow(QMainWindow):
 
         else:
             for sid in self.snapshotsList:
-                item = self.timeLine.addSnapshot(sid)
+                self.timeLine.addSnapshot(sid)
             self.timeLine.checkSelection()
 
     def btnTakeSnapshotClicked(self):
@@ -1405,7 +1405,7 @@ class MainWindow(QMainWindow):
                                 stdout = subprocess.PIPE,
                                 universal_newlines = True,
                                 env = env)
-        out, err = proc.communicate()
+        out = proc.communicate()
         messagebox.showInfo(self, 'Manual Page {}'.format(man_page), out)
 
     def btnShowHiddenFilesToggled(self, checked):
@@ -1598,7 +1598,7 @@ class MainWindow(QMainWindow):
         rd.exec()
 
     def btnSnapshotsClicked(self):
-        path, idx = self.fileSelected(fullPath = True)
+        path = self.fileSelected(fullPath = True)
 
         with self.suspendMouseButtonNavigation():
             dlg = snapshotsdialog.SnapshotsDialog(self, self.sid, path)
@@ -1637,7 +1637,7 @@ class MainWindow(QMainWindow):
             self.updateFilesView(0)
 
     def btnOpenCurrentItemClicked(self):
-        path, idx = self.fileSelected()
+        path = self.fileSelected()
 
         if not path:
             return
@@ -1762,7 +1762,7 @@ class MainWindow(QMainWindow):
 
         # try to keep old selected file
         if selected_file is None:
-            selected_file, idx = self.fileSelected()
+            selected_file = self.fileSelected()
 
         self.selected_file = selected_file
 

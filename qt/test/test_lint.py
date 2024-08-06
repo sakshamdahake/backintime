@@ -113,7 +113,7 @@ class MirrorMirrorOnTheWall(unittest.TestCase):
             # 'W0603',  # global-statement
             # 'W0614',  # unused-wildcard-import
             # 'W0611',  # unused-import
-            # 'W0612',  # unused-variable
+            'W0612',  # unused-variable
             # 'W0707',  # raise-missing-from
         ]
 

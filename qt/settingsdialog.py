@@ -754,7 +754,7 @@ class SettingsDialog(QDialog):
         self.fillCombo(self.comboRemoveOlderUnit, REMOVE_OLD_BACKUP_UNITS)
 
         # min free space
-        enabled, value, unit = self.config.minFreeSpace()
+        enabled = self.config.minFreeSpace()
 
         self.cbFreeSpace = QCheckBox(
             _('If free space is less than:'), self)
